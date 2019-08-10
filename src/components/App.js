@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Map from "./Map";
 import axios from "axios";
 
+const queryStrings = ["kickboxing", "bjj", "judo", "karate"];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       latlong: "",
-      venues: []
+      venues: [] 
     };
   }
 
@@ -24,20 +26,29 @@ class App extends React.Component {
     });
   };
 
-  getVenues = latlong => {
-    const endPoint = "https://api.foursquare.com/v2/venues/explore?";
-    const params = {
+  getURLParams = queryString => {
+    return {
       client_id: "WEA5DGFHYPFUZDSRT3PJSZLC0TTZKDOCHJMRE2HQWYECNZMD",
       client_secret: "NJQQBRJFHK5V54QL1XNVJ1YCIPDCQYV1BC02G5SBPXKGBHTD",
-      ll: "42.6977, 23.3219 ",
-      query: "coffee",
+      ll: "42.6977, 23.3219",
+      query: queryString,
       v: "20180323"
     };
-    axios
-      .get(endPoint + new URLSearchParams(params))
+  }
+
+  getVenues = latlong => {
+    let stateObj = [];
+    const endPoint = "https://api.foursquare.com/v2/venues/explore?";
+      axios.all([
+        axios.get(endPoint + new URLSearchParams(this.getURLParams(queryStrings[0]))),
+        axios.get(endPoint + new URLSearchParams(this.getURLParams(queryStrings[1]))),
+      ])
       .then(response => {
-        console.log(response);
-        this.setState({ venues: response.data.response.groups[0].items });
+        // console.log(response);
+        response.forEach(responseElement => {
+          stateObj.push(responseElement.data.response.groups[0].items);
+        })
+        this.setState({ venues: stateObj })
       })
       .catch(error => {
         console.log(error);
@@ -45,7 +56,6 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log(this.state.venues);
     return (
       <div>
         <Map item={this.state.venues} />

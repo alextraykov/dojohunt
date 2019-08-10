@@ -8,12 +8,10 @@ const Button = styled.button`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 `;
 
-export default class VenueButton extends React.Component {
-  render() {
-    return (
-      <Button>
-        <img src="dojohunt-logo.svg" />
-      </Button>
-    );
-  }
+export default function VenueButton(props) {
+  return (
+    <Button onClick={props.onClick}>
+      <img src="dojohunt-logo.svg" />
+    </Button>
+  );
 }

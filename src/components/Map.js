@@ -6,6 +6,8 @@ import VenueButton from "./VenueButton";
 
 console.log(process.env.REACT_APP_MAPBOX_TOKEN);
 
+const REACT_APP_MAPBOX_TOKEN= "pk.eyJ1IjoicG9sZWNhdHNreSIsImEiOiJjano0NmNsOTgwYTIxM2RwYXB0NjFtMHhrIn0.C7TggPuEGoLMKnY7b6Foww"
+
 export default function Map(props) {
   const mapController = new MapController();
   const [viewport, setViewport] = useState({
@@ -16,43 +18,49 @@ export default function Map(props) {
     height: "100vh"
   });
 
+  const testFunction = (e, marker) => {
+      e.preventDefault();
+      setSelectedVenue(marker);
+  }
+
   //   Object deconstruction =
   const { item } = props;
   const [selectedVenue, setSelectedVenue] = useState(null);
 
   if (item.length > 0) {
-    console.log(item);
     return (
       <div>
         <ReactMapGL
           {...viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+          mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}
           controller={mapController}
           onViewportChange={viewport => {
             setViewport(viewport);
           }}
         >
-          {item.map((marker, key) => {
+          {item.map((item, key) => {
             return (
-              <Marker
-                onClick={e => {
-                  e.preventDefault();
-                  setSelectedVenue(marker);
-                }}
-                key={key}
-                latitude={marker.venue.location.lat}
-                longitude={marker.venue.location.lng}
-              >
-                <VenueButton />
-              </Marker>
-            );
+              item.map((marker, key) => {
+                return (
+                  <Marker
+                  key={key}
+                  latitude={marker.venue.location.lat}
+                  longitude={marker.venue.location.lng}
+                  >
+                    <VenueButton 
+                      onClick={e => testFunction(e, marker)}
+                    />
+                  </Marker>
+                );
+              })
+            )
           })}
           {selectedVenue ? (
             <Popup
               latitude={selectedVenue.venue.location.lat}
               longitude={selectedVenue.venue.location.lng}
             >
-              <div>Venue</div>
+              <div>{selectedVenue.venue.name}</div>
             </Popup>
           ) : null}
         </ReactMapGL>
