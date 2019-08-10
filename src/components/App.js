@@ -1,54 +1,56 @@
-import React, { Component } from "react";
-import { Map, GoogleApiWrapper } from "google-maps-react";
-import SearchBar from "./SearchBar";
+import React, { useState } from "react";
+import Map from "./Map";
 import axios from "axios";
 
-export class App extends Component {
-  state = {
-    venues: []
-  };
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  componentWillMount() {
-    this.getVenues();
+    this.state = {
+      latlong: "",
+      venues: []
+    };
   }
 
-  getVenues = () => {
+  componentDidMount = () => {
+    this.getGeolocation();
+  };
+
+  getGeolocation = () => {
+    navigator.geolocation.getCurrentPosition(response => {
+      const latlong =
+        response.coords.latitude + "," + response.coords.longitude;
+      this.getVenues(latlong);
+    });
+  };
+
+  getVenues = latlong => {
     const endPoint = "https://api.foursquare.com/v2/venues/explore?";
-    const parameters = {
+    const params = {
       client_id: "WEA5DGFHYPFUZDSRT3PJSZLC0TTZKDOCHJMRE2HQWYECNZMD",
       client_secret: "NJQQBRJFHK5V54QL1XNVJ1YCIPDCQYV1BC02G5SBPXKGBHTD",
-      query: "martial arts",
-      near: "Sofia",
+      ll: "42.6977, 23.3219 ",
+      query: "coffee",
       v: "20180323"
     };
-
     axios
-      .get(endPoint + new URLSearchParams(parameters))
+      .get(endPoint + new URLSearchParams(params))
       .then(response => {
+        console.log(response);
         this.setState({ venues: response.data.response.groups[0].items });
       })
       .catch(error => {
-        console.log("ERROR! " + error);
+        console.log(error);
       });
   };
 
   render() {
+    // console.log(this.state.venues);
     return (
-      <div className="">
-        <SearchBar />
-        <Map
-          google={this.props.google}
-          zoom={14}
-          className="ui container"
-          initialCenter={{
-            lat: 42.6977,
-            lng: 23.3219
-          }}
-        />
+      <div>
+        <Map item={this.state.venues} />
       </div>
     );
   }
 }
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyDZFmCp6JqYrar3BxIy4XP5N-RC00Hqw6Q"
-})(App);
+export default App;
