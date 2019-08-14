@@ -11,7 +11,7 @@ const Button = styled.button`
 export default function VenueButton(props) {
   return (
     <Button onClick={props.onClick}>
-      <img src="dojohunt-logo.svg" />
+      <img src="dojohunt-logo.svg" alt=""/>
     </Button>
   );
 }

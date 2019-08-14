@@ -6,22 +6,23 @@ import VenueButton from "./VenueButton";
 
 console.log(process.env.REACT_APP_MAPBOX_TOKEN);
 
-const REACT_APP_MAPBOX_TOKEN= "pk.eyJ1IjoicG9sZWNhdHNreSIsImEiOiJjano0NmNsOTgwYTIxM2RwYXB0NjFtMHhrIn0.C7TggPuEGoLMKnY7b6Foww"
+const REACT_APP_MAPBOX_TOKEN =
+  "pk.eyJ1IjoicG9sZWNhdHNreSIsImEiOiJjano0NmNsOTgwYTIxM2RwYXB0NjFtMHhrIn0.C7TggPuEGoLMKnY7b6Foww";
 
 export default function Map(props) {
   const mapController = new MapController();
   const [viewport, setViewport] = useState({
     latitude: 42.6977,
     longitude: 23.3219,
-    zoom: 14,
+    zoom: 12,
     width: "100vw",
     height: "100vh"
   });
 
   const testFunction = (e, marker) => {
-      e.preventDefault();
-      setSelectedVenue(marker);
-  }
+    e.preventDefault();
+    setSelectedVenue(marker);
+  };
 
   //   Object deconstruction =
   const { item } = props;
@@ -39,33 +40,41 @@ export default function Map(props) {
           }}
         >
           {item.map((item, key) => {
-            return (
-              item.map((marker, key) => {
-                return (
-                  <Marker
+            return item.map((marker, key) => {
+              return (
+                <Marker
                   key={key}
                   latitude={marker.venue.location.lat}
                   longitude={marker.venue.location.lng}
-                  >
-                    <VenueButton 
-                      onClick={e => testFunction(e, marker)}
-                    />
-                  </Marker>
-                );
-              })
-            )
+                >
+                  <VenueButton onClick={e => testFunction(e, marker)} />
+                </Marker>
+              );
+            });
           })}
           {selectedVenue ? (
             <Popup
               latitude={selectedVenue.venue.location.lat}
               longitude={selectedVenue.venue.location.lng}
+              onClose={() => {
+                setSelectedVenue(null);
+              }}
             >
-              <div>{selectedVenue.venue.name}</div>
+              <div>
+                <h2>{selectedVenue.venue.name}</h2>
+                <button>View More</button>
+              </div>
             </Popup>
           ) : null}
         </ReactMapGL>
       </div>
     );
   }
-  return <div>Loading</div>;
+  return (
+    <div className="ui">
+      <div className="ui active inverted dimmer">
+        <div className="ui text loader">Discovering Dojos</div>
+      </div>
+    </div>
+  );
 }
