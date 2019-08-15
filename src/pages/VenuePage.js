@@ -84,6 +84,17 @@ const SecondaryHead = styled.h2`
   font-weight: 400;
 `;
 
+const FlexRow = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-content: space-around;
+  &:nth-child(1) {
+    margin-right: 0;
+  }
+`;
+
 class VenuePage extends Component {
   getVenueImage = () => {
     const endPoint = "https://api.foursquare.com/v2/venues/";
@@ -116,7 +127,26 @@ class VenuePage extends Component {
               </MapDiv>
             </DescriptionContainer>
             <SecondaryHead>Gym Ratings</SecondaryHead>
-            <RatingComponent />
+            <FlexRow>
+              <RatingComponent
+                category="Friendliness"
+                description="Rate how friendly are the gym practitioners and coaches"
+              />
+              <RatingComponent
+                category="Hyiegene"
+                description="Rate the cleanliness of the gym"
+              />
+            </FlexRow>
+            <FlexRow>
+              <RatingComponent
+                category="Knowledge"
+                description="Rate how knowlegable are the coaches"
+              />
+              <RatingComponent
+                category="Cost"
+                description="Rate how reasonable is the cost of the gym"
+              />
+            </FlexRow>
           </PageContainer>
         </Page>
       </div>

@@ -5,11 +5,24 @@ import styled from "styled-components";
 const SRWrapper = styled.div`
   background-color: white;
   padding: 20px;
+  flex-direction: column;
+  justify-items: flex-start;
+  display: flex;
+  margin-right: 15px;
+  flex: 1;
 `;
+
+const CategoryIcon = styled.p`
+  font-size: 40px;
+  padding-right: 15px;
+`;
+// Ask Petar how to conditonally render icon depending of the props value
 
 const SRHeading = styled.h2`
   font-size: 18px;
+  padding-bottom: 10px;
 `;
+
 export default class RatingComponent extends React.Component {
   constructor() {
     super();
@@ -28,8 +41,10 @@ export default class RatingComponent extends React.Component {
 
     return (
       <SRWrapper>
-        <SRHeading>Cleanliness</SRHeading>
-        <p>Rate how friendly are the gym practitioners and coaches</p>
+        <div>
+          <SRHeading>{this.props.category}</SRHeading>
+        </div>
+        <p>{this.props.description}</p>
         <StarRatingComponent
           name="rate1"
           starCount={5}
