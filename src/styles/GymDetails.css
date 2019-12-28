@@ -1,0 +1,53 @@
+.content-container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+#gym-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 960px;
+  margin: 0 auto;
+}
+
+#gym-items-container {
+  width: 100%;
+  margin-top: 250px;
+  margin-bottom: 40px;
+}
+
+.back-button {
+  position: relative;
+  display: inline-block;
+  top: 25px;
+  left: 0;
+  color: white;
+  z-index: 1;
+  font-size: 24px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.back-button:hover {
+  transform: translateY(-10px);
+}
+
+.fw-image {
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(50%);
+  z-index: -999;
+  margin-left: -50vw;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.suggested-gyms {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,37 @@
+.dojohunt-logo {
+    margin-right: 25px;
+    height: 40px;
+    width: auto;
+}
+
+#nav-input {
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    background: #ffffff;
+    width: 600px;
+    font-size: 1rem;
+    line-height: 38px;
+    margin-right: 25px;
+    padding: 2px 20px;
+}
+
+#nav-dropdown {
+    display: block;
+}
+
+#nav-input:focus {
+    outline: none;
+}
+
+.nav-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: auto;
+  align-content: flex-start;
+  margin-bottom: 40px;
+}
+.item {
+  margin: 12.5px;
+}
+.item:first-child {
+  margin-left: 0;
+}
+.item:last-child {
+  margin-right: 0;
+}
+
+.item-img {
+  object-fit: cover;
+  width: 200px;
+}
