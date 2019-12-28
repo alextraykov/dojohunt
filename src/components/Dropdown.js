@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import FontAwesome from "react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../styles/Dropdown.css";
 
-class Dropdown extends Component {
+export default class Dropdown extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -57,9 +57,9 @@ class Dropdown extends Component {
                 <div className="dd-header" onClick={() => this.toggleList()}>
                     <div className="dd-header-title">{headerTitle}</div>
                     {listOpen ? (
-                        <FontAwesome name="angle-up" size="2x" />
+                        <FontAwesomeIcon name="angle-up" size="2x" />
                     ) : (
-                        <FontAwesome name="angle-down" size="2x" />
+                        <FontAwesomeIcon name="angle-down" size="2x" />
                     )}
                 </div>
                 {listOpen && (
@@ -77,7 +77,7 @@ class Dropdown extends Component {
                                 }
                             >
                                 {item.title}{" "}
-                                {item.selected && <FontAwesome name="check" />}
+                                {item.selected && <FontAwesomeIcon name="check" />}
                             </li>
                         ))}
                     </ul>
@@ -86,5 +86,3 @@ class Dropdown extends Component {
         );
     }
 }
-
-export default Dropdown;

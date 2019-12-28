@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import RatingComponent from "../components/RatingComponent";
+import GymHeaderDetails from "../components/GymHeaderDetails"
 
 const FullWidthContainer = styled.div`
   width: 100%;
@@ -25,13 +26,9 @@ const PageContainer = styled.div`
 
 const DescriptionContainer = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: row;
   z-index: 2;
   transform: translateY(-100px);
   background-color: #fff;
-  -webkit-box-shadow: 0px 33px 102px -50px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 33px 102px -50px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 33px 102px -50px rgba(0, 0, 0, 0.5);
 `;
 const HeaderDiv = styled.div`
@@ -106,26 +103,9 @@ class VenuePage extends Component {
         <Page>
           <FullWidthContainer />
           <PageContainer>
-            <DescriptionContainer>
-              <LeftCont>
-                <HeaderDiv>
-                  <Heading>Boxing Gym</Heading>
-                  <Rating>4.5 ⭐️</Rating>
-                </HeaderDiv>
-                <Location> Location 📍</Location>
-                <p>
-                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-                  used in laying out print, graphic or web designs. The passage
-                  is attributed to an unknown typesetter in the 15th century who
-                  is thought to have scrambled parts of Cicero's De Finibus
-                  Bonorum et Malorum for use in a type specimen book.
-                </p>
-                <Button>Contact Gym</Button>
-              </LeftCont>
-              <MapDiv>
-                <img src="https://i.imgur.com/Riyq6PB.png" />
-              </MapDiv>
-            </DescriptionContainer>
+     <DescriptionContainer>
+            <GymHeaderDetails />
+     </DescriptionContainer>
             <SecondaryHead>Gym Ratings</SecondaryHead>
             <FlexRow>
               <RatingComponent

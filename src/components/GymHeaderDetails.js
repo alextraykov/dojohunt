@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/GymHeaderDetails.css";
 import MapComponent from "../components/MapComponent";
 
-export default function GymItem(props) {
+export default function GymHeaderDetails(props) {
     return (
         <div className="gi-container">
             <div className="gi-map">

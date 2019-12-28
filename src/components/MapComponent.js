@@ -17,7 +17,7 @@ export default class Map extends React.Component {
             <StaticMap
                 captureScroll={true}
                 captureDrag={true}
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                 {...this.state.viewport}
                 // Commit changes:
                 // Removed onViewportChange handler as we don't want the map to move
