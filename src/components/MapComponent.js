@@ -1,8 +1,8 @@
 import React from "react";
 import StaticMap from "react-map-gl";
 
-export default class Map extends React.Component {
-    state = {
+export default function Map(props) {
+    const test = {
         viewport: {
             width: 250,
             height: 250,
@@ -12,17 +12,10 @@ export default class Map extends React.Component {
         }
     };
 
-    render() {
-        return (
-            <StaticMap
-                captureScroll={true}
-                captureDrag={true}
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                {...this.state.viewport}
-                // Commit changes:
-                // Removed onViewportChange handler as we don't want the map to move
-                // on the card.
-            />
-        );
-    }
+    return (
+        <StaticMap
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            {...test}
+        />
+    );
 }
