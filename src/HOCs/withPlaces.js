@@ -7,7 +7,7 @@ export default function withPlaces(WrappedComponent) {
             super(props);
 
             this.state = {
-                placesAPI: false
+                loaded: false
             };
         }
 
@@ -21,10 +21,7 @@ export default function withPlaces(WrappedComponent) {
             return !this.state.loaded ? (
                 <div>Loading...</div>
             ) : (
-                <WrappedComponent
-                    placesAPI={this.state.placesAPI}
-                    {...this.props}
-                />
+                <WrappedComponent {...this.props} />
             );
         }
     };

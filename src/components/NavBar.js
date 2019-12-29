@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/NavBar.css";
-import Dropdown from "./Dropdown";
 
 export default class NavBar extends React.Component {
     constructor(props) {
@@ -44,12 +43,6 @@ export default class NavBar extends React.Component {
                         onChange={e =>
                             this.state.handleInputChange(e.target.value)
                         }
-                    />
-                    <Dropdown
-                        id="nav-dropdown"
-                        title="Gym type"
-                        list={this.state.gyms}
-                        resetThenSet={this.resetThenSet}
                     />
                 </div>
             </div>
