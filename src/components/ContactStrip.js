@@ -12,7 +12,7 @@ class ContactStrip extends Component {
                             If that's the case, you can reach out to them and
                             schedule your first class
                         </p>
-                        <button className="btn-secondary">Visit page</button>
+                        <button className="btn-secondary">Contact gym</button>
                     </div>
                 </div>
             </div>

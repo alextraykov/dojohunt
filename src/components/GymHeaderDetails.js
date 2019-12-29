@@ -4,7 +4,7 @@ import MapComponent from "../components/MapComponent";
 
 export default function GymHeaderDetails(props) {
     return (
-        <div className="gi-container">
+        <div className="gh-container">
             <div className="gi-map">
                 <MapComponent />
             </div>

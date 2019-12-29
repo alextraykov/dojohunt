@@ -1,5 +1,4 @@
 .sg-container {
-  margin-top: 25px;
   padding-bottom: 25px;
   width: 450px;
   height: auto;
@@ -12,6 +11,7 @@
 }
 
 .sg-textitems {
+  padding-top: 25px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -28,7 +28,6 @@
   font-weight: normal;
   font-size: 20px;
   line-height: 23px;
-  padding-bottom: 15px;
   margin-top: 25px;
 }
 

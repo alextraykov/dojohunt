@@ -3,6 +3,10 @@ import axios from "axios";
 import styled from "styled-components";
 import RatingComponent from "../components/RatingComponent";
 import GymHeaderDetails from "../components/GymHeaderDetails"
+import PhotoGrid from "../components/PhotoGrid"
+import ContactStrip from "../components/ContactStrip";
+import SuggestedGym from "../components/SuggestedGym";
+import Footer from "../components/Footer";
 
 const FullWidthContainer = styled.div`
   width: 100%;
@@ -26,9 +30,12 @@ const PageContainer = styled.div`
 
 const DescriptionContainer = styled.div`
   display: flex;
+  align-items: center;  
   z-index: 2;
   transform: translateY(-100px);
   background-color: #fff;
+  -webkit-box-shadow: 0px 33px 102px -50px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 33px 102px -50px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 33px 102px -50px rgba(0, 0, 0, 0.5);
 `;
 const HeaderDiv = styled.div`
@@ -77,19 +84,18 @@ const Heading = styled.h1`
 `;
 
 const SecondaryHead = styled.h2`
-  font-size: 32px;
-  font-weight: 400;
-`;
+    font-size: 18px;
+    line-height: 21px;
+    font-style: normal;
+    font-weight: normal;
+ `;
 
 const FlexRow = styled.div`
   display: flex;
   width: 100%;
   margin-bottom: 20px;
   flex-direction: row;
-  align-content: space-around;
-  &:nth-child(1) {
-    margin-right: 0;
-  }
+  justify-content: space-between;
 `;
 
 class VenuePage extends Component {
@@ -106,28 +112,16 @@ class VenuePage extends Component {
      <DescriptionContainer>
             <GymHeaderDetails />
      </DescriptionContainer>
-            <SecondaryHead>Gym Ratings</SecondaryHead>
-            <FlexRow>
-              <RatingComponent
-                category="Friendliness"
-                description="Rate how friendly are the gym practitioners and coaches"
-              />
-              <RatingComponent
-                category="Hyiegene"
-                description="Rate the cleanliness of the gym"
-              />
-            </FlexRow>
-            <FlexRow>
-              <RatingComponent
-                category="Knowledge"
-                description="Rate how knowlegable are the coaches"
-              />
-              <RatingComponent
-                category="Cost"
-                description="Rate how reasonable is the cost of the gym"
-              />
-            </FlexRow>
+            <SecondaryHead>Photos</SecondaryHead>
+            <PhotoGrid />
+            <ContactStrip />
+            <SecondaryHead>Similar Gyms</SecondaryHead>
+<FlexRow>
+              <SuggestedGym />
+              <SuggestedGym />
+</FlexRow>
           </PageContainer>
+<Footer />
         </Page>
       </div>
     );

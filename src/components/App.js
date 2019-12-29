@@ -3,6 +3,7 @@ import Map from "./Map";
 import axios from "axios";
 import VenuePage from "../pages/VenuePage";
 import VenueList from "../pages/VenueList";
+import TermsConditions from "../pages/TermsConditions";
 import Dropdown from '../components/Dropdown'
 const queryStrings = ["martial arts", "boxing", "karate"];
 
@@ -189,6 +190,7 @@ class App extends React.Component {
                 {/* {this.state.imgUrl.length > 0 && ( */}
                 {/* <img src={this.state.imgUrl} alt="test" />
         )} */}
+        {/* <VenueList /> */}
         <VenuePage />
                 {/* <Map item={this.state.venues} /> */}
                 {/* <VenuePage /> */}
